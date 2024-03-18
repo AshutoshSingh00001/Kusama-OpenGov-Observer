@@ -47,11 +47,12 @@ const OpenGovTracks = async() => {
         const referendum_locked = Math.floor(responseData.data.referendum_locked / 1000000000000)
         const formattedreferendum_locked = referendum_locked.toLocaleString();
         const referendum_lockedusd = (referendum_locked * ksmPrice).toLocaleString()
-        const referendum_participate = (responseData.data.referendum_participate / 1000000000000).toLocaleString()
+        const formattedReferendumParticipates = Math.floor(responseData.data.referendum_participate / 1000000000000)
+        const referendum_participate = formattedReferendumParticipates.toLocaleString()
         const voting_total = responseData.data.voting_total
         const confirm_total = responseData.data.confirm_total
-        const next_burn = (referendum_locked / 1 * 100).toLocaleString()
-        const next_burn_usd = ((referendum_locked / 1 * 100) * ksmPrice).toLocaleString()
+        const next_burn = (referendum_locked * 0.2/100).toLocaleString()
+        const next_burn_usd = ((referendum_locked * 0.2/100) * ksmPrice).toLocaleString()
         console.log(next_burn, referendum_locked,referendum_participate)
         const tweetData = `OpenGov Treasury Overview \n Available ${formattedreferendum_locked} KSM ($${referendum_lockedusd} USD) \n Next Burn ${next_burn} KSM ($${next_burn_usd} USD) \n KSM Price $${ksmPrice} USD \n Active Voters ${referendum_participate} \n Active Referendums ${voting_total} \n Confirming Referendums ${confirm_total} \n\n #DOT #kusama #OpenGOV #votes  `
         const tweet = async () => {
