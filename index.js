@@ -248,7 +248,7 @@ const matchingVotesAye = aye.filter(vote => {
               }
           }
           
-          return checkAndTweet()
+          return checkAndTweet(effectiveVotes);
         } else {
             console.log(`${voteType} failed`);
         }
