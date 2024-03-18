@@ -1,5 +1,6 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const { twitterClient } = require("./twitterClient.js")
+const{OpenGovTracks} = require("./OpenGovTracks.js")
 const { ApiPromise, WsProvider } = require('@polkadot/api')
 const CronJob = require("cron").CronJob;
 const express = require('express')
@@ -285,3 +286,4 @@ const matchingVotesAye = aye.filter(vote => {
 //       await polkassembly(); // Make sure to await the function
 //   }, pollingInterval);
 
+OpenGovTracks()
