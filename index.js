@@ -1,6 +1,5 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const { twitterClient } = require("./twitterClient.js")
-const{OpenGovTracks} = require("./OpenGovTracks.js")
 const { ApiPromise, WsProvider } = require('@polkadot/api')
 const CronJob = require("cron").CronJob;
 const express = require('express')
@@ -236,12 +235,8 @@ const matchingVotesAye = aye.filter(vote => {
             console.log(postId)
             console.log(identities.join(', '))
             console.log(twitter)
-            if (effectiveVotes > 500) {
-                await tweet(); // Assuming tweet is previously defined as an async function
-                console.log("Tweet sent because effectiveVotes is greater than 500.");
-            } else {
-                console.log("No tweet was sent because effectiveVotes is 500 or less.");
-            }
+            
+            return tweet()
         } else {
             console.log(`${voteType} failed`);
         }
@@ -286,4 +281,3 @@ const matchingVotesAye = aye.filter(vote => {
 //       await polkassembly(); // Make sure to await the function
 //   }, pollingInterval);
 
-OpenGovTracks()
