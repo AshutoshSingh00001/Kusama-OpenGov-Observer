@@ -237,7 +237,7 @@ const matchingVotesAye = aye.filter(vote => {
             console.log(twitter)
             async function checkAndTweet(effectiveVotes) {
               try {
-                  if (effectiveVotes > 500) {
+                  if (effectiveVotes > 50) {
                       await tweet(); // Assuming tweet is previously defined as an async function
                       console.log("Tweet sent because effectiveVotes is greater than 500.");
                   } else {
