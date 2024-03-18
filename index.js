@@ -235,20 +235,12 @@ const matchingVotesAye = aye.filter(vote => {
             console.log(postId)
             console.log(identities.join(', '))
             console.log(twitter)
-            async function checkAndTweet(effectiveVotes) {
-              try {
-                  if (effectiveVotes > 50) {
-                      await tweet(); // Assuming tweet is previously defined as an async function
-                      console.log("Tweet sent because effectiveVotes is greater than 500.");
-                  } else {
-                      console.log("No tweet was sent because effectiveVotes is 500 or less.");
-                  }
-              } catch (error) {
-                  console.error("Failed to send tweet:", error);
-              }
-          }
-          
-          return checkAndTweet(effectiveVotes);
+            if (effectiveVotes > 500) {
+                await tweet(); // Assuming tweet is previously defined as an async function
+                console.log("Tweet sent because effectiveVotes is greater than 500.");
+            } else {
+                console.log("No tweet was sent because effectiveVotes is 500 or less.");
+            }
         } else {
             console.log(`${voteType} failed`);
         }
