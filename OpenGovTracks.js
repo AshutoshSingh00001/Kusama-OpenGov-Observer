@@ -33,7 +33,7 @@ const OpenGovTracks = async() => {
         });
         try {
             const getresponse = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=kusama&vs_currencies=USD", {
-              method: 'POST',
+              method: 'GET',
               headers: {
                 'Content-Type': 'application/json; charset=utf-8',
               },
