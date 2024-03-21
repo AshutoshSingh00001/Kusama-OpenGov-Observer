@@ -46,7 +46,7 @@ const subscan = async () => {
     const data = {
       postId: postId,
       page: 1,
-      listingLimit: Infinity,
+      listingLimit: 5,
       voteType: 'ReferendumV2'
     };
   
@@ -221,16 +221,11 @@ const matchingVotesAye = aye.filter(vote => {
             const referendumLink = `https://kusama.polkassembly.io/referenda/${postId}`
             const tweetData = `${identities.join(', ')} ${twitter} voted ${decision} with ${formattedTotalKSM} KSM with a total effective votes of ${effectiveVotes} KSM and ${lockPeriod}x conviction on Referendum ${postId} ${referendumLink}\n\n#KSM #kusama #OpenGOV #votes`;
             const tweet = async () => {
-                if(effectiveVotes > 50) {
                     try {
                         await twitterClient.v2.tweet(tweetData);
                     } catch (e) {
                         console.log(e);
                     }
-                    console.log('tweet maded')
-                } else {
-                    console.log("Tweet failed some error")
-                }
             };
             console.log(voters);
             console.log(decision);
