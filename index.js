@@ -220,6 +220,7 @@ const matchingVotesAye = aye.filter(vote => {
             const effectiveVotes = (balanceKSM * lockPeriod).toLocaleString();
             const referendumLink = `https://kusama.polkassembly.io/referenda/${postId}`
             const tweetData = `${identities.join(', ')} ${twitter} voted ${decision} with ${formattedTotalKSM} KSM with a total effective votes of ${effectiveVotes} KSM and ${lockPeriod}x conviction on Referendum ${postId} ${referendumLink}\n\n#KSM #kusama #OpenGOV #votes`;
+            const totalVotes = balanceDot * lockPeriod;
             const tweet = async () => {
                     try {
                         await twitterClient.v2.tweet(tweetData);
@@ -236,7 +237,13 @@ const matchingVotesAye = aye.filter(vote => {
             console.log(identities.join(', '))
             console.log(twitter)
             
-            return tweet()
+            if(totalVotes > 500){
+                console.log("success")
+                return tweet()
+            } else {
+                console.log("tweet not sent")
+            }
+                    // return tweet()
         } else {
             console.log(`${voteType} failed`);
         }
