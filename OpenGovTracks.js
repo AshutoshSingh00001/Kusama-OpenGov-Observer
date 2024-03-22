@@ -1,6 +1,5 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const { twitterClient } = require("./twitterClient.js")
-const { ApiPromise, WsProvider } = require('@polkadot/api')
 const CronJob = require("cron").CronJob;
 const express = require('express')
 const app = express()
